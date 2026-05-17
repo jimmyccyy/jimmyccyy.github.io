@@ -367,6 +367,31 @@
       .carousel {
         height: 280px;
       }
+
+      /* Make the envelope overlay responsive so the flap isn't clipped */
+      .ribbon-overlay {
+        width: 360px;
+        height: 460px;
+        top: 38%;
+        transform: translate(-50%, -38%);
+        overflow: visible;
+        animation: envelopeDisappear 0.9s ease-out 1.6s forwards;
+      }
+
+      .envelope-body {
+        font-size: 84px;
+        border-radius: 7px;
+      }
+
+      .envelope-flap {
+        border-left: 180px solid transparent;
+        border-right: 180px solid transparent;
+        border-top: 230px solid #c1121f;
+      }
+
+      .envelope-content span {
+        font-size: 56px;
+      }
     }
   </style>
 </head>
