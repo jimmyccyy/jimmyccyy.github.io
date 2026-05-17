@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Reminder</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background: linear-gradient(to bottom, #fffaf7, #fff);
+      color: #4b3d35;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      padding: 40px 28px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      animation: fadeUp 1s ease;
+    }
+
+    .couple {
+      font-size: 18px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      color: #9c7b65;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: #7d5f50;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-top: 20px;
+      color: #6f5b50;
+    }
+
+    .countdown {
+      margin: 36px 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .count-box {
+      background: #fff;
+      border-radius: 20px;
+      padding: 18px 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .count-box h2 {
+      font-size: 32px;
+      color: #b07b62;
+    }
+
+    .count-box p {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .details {
+      margin-top: 30px;
+      text-align: left;
+      background: #fff;
+      padding: 24px;
+      border-radius: 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      line-height: 2;
+    }
+
+    .details h3 {
+      margin-bottom: 16px;
+      color: #8d6958;
+    }
+
+    .detail-row {
+      margin-bottom: 10px;
+    }
+
+    .label {
+      font-weight: 700;
+      color: #7c6559;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: #b3836b;
+      color: white;
+      transition: 0.3s;
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(179,131,107,0.25);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #9f6f58;
+    }
+
+    .gallery {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #8d7c72;
+      font-size: 14px;
+      padding-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .music-btn {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      background: white;
+      border: none;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+      cursor: pointer;
+      font-size: 18px;
+      z-index: 999;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 38px;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+  </audio>
+
+  <section class="hero">
+    <div class="container">
+      <div class="card">
+
+        <div class="couple">Jimmy & Partner</div>
+
+        <h1>Wedding Day</h1>
+
+        <p class="subtitle">
+          我们的大日子即将到来 ❤️<br>
+          期待当天与大家见面，
+          一起分享这份幸福与喜悦 ✨
+        </p>
+
+        <div class="countdown">
+          <div class="count-box">
+            <h2 id="days">0</h2>
+            <p>Days</p>
+          </div>
+          <div class="count-box">
+            <h2 id="hours">0</h2>
+            <p>Hours</p>
+          </div>
+          <div class="count-box">
+            <h2 id="minutes">0</h2>
+            <p>Minutes</p>
+          </div>
+          <div class="count-box">
+            <h2 id="seconds">0</h2>
+            <p>Seconds</p>
+          </div>
+        </div>
+
+        <div class="details">
+          <h3>婚礼资讯</h3>
+
+          <div class="detail-row">
+            <span class="label">📅 日期：</span>
+            2026年7月5日（星期日）
+          </div>
+
+          <div class="detail-row">
+            <span class="label">🕕 时间：</span>
+            傍晚6时正
+          </div>
+
+          <div class="detail-row">
+            <span class="label">📍 地点：</span>
+            港城酒家 Oriental Star @ EkoCheras Mall, KL
+          </div>
+
+          <div class="detail-row">
+            <span class="label">👔 Dress Code：</span>
+            Smart Casual / Formal
+          </div>
+        </div>
+
+        <div class="button-group">
+          <a class="btn" href="https://maps.google.com" target="_blank">
+            打开导航
+          </a>
+
+          <a class="btn" href="https://calendar.google.com" target="_blank">
+            加入日历
+          </a>
+
+          <a class="btn" href="https://forms.google.com" target="_blank">
+            RSVP
+          </a>
+        </div>
+
+        <div class="gallery">
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop" alt="">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
+
+        <div class="footer">
+          Thank you for being part of our special day ❤️<br>
+          See you soon ✨
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const weddingDate = new Date('2026-07-05T18:00:00').getTime();
+
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerHTML = days;
+      document.getElementById('hours').innerHTML = hours;
+      document.getElementById('minutes').innerHTML = minutes;
+      document.getElementById('seconds').innerHTML = seconds;
+    }, 1000);
+
+    function toggleMusic() {
+      const music = document.getElementById('bgMusic');
+
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+  </script>
+
+</body>
+</html>
