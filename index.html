@@ -272,6 +272,7 @@
       border-radius: 20px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.08);
       height: 320px;
+      width: 100%;
     }
 
     .carousel-track {
@@ -279,10 +280,12 @@
       transition: transform 0.8s ease;
       will-change: transform;
       height: 100%;
+      width: 100%;
     }
 
     .slide {
       min-width: 100%;
+      width: 100%;
       flex-shrink: 0;
       height: 100%;
     }
@@ -353,6 +356,10 @@
 
       .gallery {
         grid-template-columns: 1fr;
+      }
+
+      .carousel {
+        height: 280px;
       }
     }
   </style>
