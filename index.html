@@ -331,21 +331,6 @@
       line-height: 1.8;
     }
 
-    .music-btn {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      background: white;
-      border: none;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-      cursor: pointer;
-      font-size: 18px;
-      z-index: 999;
-    }
-
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -383,12 +368,6 @@
       </div>
     </div>
   </div>
-
-  <button class="music-btn" onclick="toggleMusic()">🎵</button>
-
-  <audio id="bgMusic" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-  </audio>
 
   <section class="hero">
     <div class="container">
@@ -541,15 +520,6 @@
       });
     });
 
-    function toggleMusic() {
-      const music = document.getElementById('bgMusic');
-
-      if (music.paused) {
-        music.play();
-      } else {
-        music.pause();
-      }
-    }
   </script>
 
 </body>
